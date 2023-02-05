@@ -21,6 +21,7 @@ export default function TodoList() {
     const q = query(collection(db, "todos"), where("owner", "==", user?.uid));
     const querySnapshot = await getDocs(q);
     const todos = querySnapshot.docs.map((doc) => doc.data());
+    // @ts-ignore
     setTodos(todos);
   };
 
