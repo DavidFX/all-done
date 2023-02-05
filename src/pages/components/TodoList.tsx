@@ -8,6 +8,7 @@ import {
   updateDoc,
   where,
   deleteDoc,
+  DocumentData,
 } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 // Import useState hook and useEffect hook
@@ -15,13 +16,12 @@ import { useState, useEffect } from "react";
 
 export default function TodoList() {
   const [user] = useAuthState(auth);
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState<DocumentData>([]);
 
   const getTodos = async () => {
     const q = query(collection(db, "todos"), where("owner", "==", user?.uid));
     const querySnapshot = await getDocs(q);
     const todos = querySnapshot.docs.map((doc) => doc.data());
-    // @ts-ignore
     setTodos(todos);
   };
 

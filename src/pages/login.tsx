@@ -76,7 +76,7 @@ export default function Login() {
           <button className="btn-primary btn">Login</button>
         </form>
         <p className="mt-2">
-          don't have an account{" "}
+          don&apos;t have an account{" "}
           <Link className="link" href="/register">
             sign up
           </Link>

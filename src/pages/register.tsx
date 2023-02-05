@@ -7,8 +7,7 @@ import {
   useAuthState,
   useCreateUserWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
-import { auth, db } from "../utils/firebase";
-import { doc, setDoc } from "firebase/firestore";
+import { auth } from "../utils/firebase";
 
 export default function Register() {
   // Init router
