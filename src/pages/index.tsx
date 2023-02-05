@@ -9,8 +9,8 @@ import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const Home: NextPage = () => {
-  const router = useRouter();
   const [user, loading, error] = useAuthState(auth);
+  const router = useRouter();
 
   if (loading)
     return (
@@ -44,9 +44,9 @@ const Home: NextPage = () => {
             <TodoForm />
             <TodoList />
             <div className="mt-2 flex justify-between">
-              <button className="btn-secondary btn-sm btn ">
+              {/* <button className="btn-secondary btn-sm btn ">
                 clear completed
-              </button>
+              </button> */}
               <button
                 onClick={() => signOut(auth)}
                 className="btn-error btn-sm btn"
