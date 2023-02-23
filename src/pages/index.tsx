@@ -39,21 +39,10 @@ const Home: NextPage = () => {
       <div className="flex h-screen w-screen flex-col items-center justify-center">
         <div className="card w-96 bg-base-100 shadow-xl">
           <div className="card-body">
-            <h2 className="card-title">all done todo</h2>
-            <p>{user?.email}</p>
+            <h2 className="card-title">allDone</h2>
+            <p>{user?.displayName}</p>
             <TodoForm />
-            <TodoList />
-            <div className="mt-2 flex justify-between">
-              {/* <button className="btn-secondary btn-sm btn ">
-                clear completed
-              </button> */}
-              <button
-                onClick={() => signOut(auth)}
-                className="btn-error btn-sm btn"
-              >
-                log out
-              </button>
-            </div>
+            <TodoList signOut={signOut} />
           </div>
         </div>
       </div>
