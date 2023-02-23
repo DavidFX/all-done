@@ -4,7 +4,6 @@ import TodoList from "./components/TodoList";
 import Layout from "./Layout";
 
 import { auth } from "../utils/firebase";
-import { signOut } from "firebase/auth";
 import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 
@@ -42,7 +41,7 @@ const Home: NextPage = () => {
             <h2 className="card-title">allDone</h2>
             <p>{user?.displayName}</p>
             <TodoForm />
-            <TodoList signOut={signOut} />
+            <TodoList />
           </div>
         </div>
       </div>
