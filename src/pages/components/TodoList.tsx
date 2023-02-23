@@ -10,11 +10,12 @@ import {
   deleteDoc,
   DocumentData,
 } from "firebase/firestore";
+import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 // Import useState hook and useEffect hook
 import { useState, useEffect } from "react";
 
-export default function TodoList(signOut: any) {
+export default function TodoList() {
   const [user] = useAuthState(auth);
   const [todos, setTodos] = useState<DocumentData>([]);
 

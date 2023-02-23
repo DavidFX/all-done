@@ -1,8 +1,11 @@
 import Layout from "./Layout";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { useAuthState, useSignInWithGoogle } from "react-firebase-hooks/auth";
-import { FaGooglePlusSquare } from "react-icons/fa";
+import {
+  useAuthState,
+  useSignInWithGoogle,
+  useSignInWithFacebook,
+} from "react-firebase-hooks/auth";
+import { FaGooglePlusSquare, FaFacebookSquare } from "react-icons/fa";
 
 import { auth } from "../utils/firebase";
 
@@ -12,6 +15,7 @@ export default function Login() {
 
   // Login user
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [signInWithFacebook] = useSignInWithFacebook(auth);
 
   if (error)
     return (
@@ -40,9 +44,17 @@ export default function Login() {
     <Layout title="Login">
       <div className="flex h-screen w-screen  flex-col items-center justify-center">
         <h1 className="text-3xl font-bold">Sign In</h1>
-        <button className="mt-4 text-5xl" onClick={() => signInWithGoogle()}>
-          <FaGooglePlusSquare />
-        </button>
+        <div className="space-x-2">
+          <button className="mt-4 text-5xl" onClick={() => signInWithGoogle()}>
+            <FaGooglePlusSquare />
+          </button>
+          <button
+            className="mt-4 text-5xl"
+            onClick={() => signInWithFacebook()}
+          >
+            <FaFacebookSquare />
+          </button>
+        </div>
       </div>
     </Layout>
   );
