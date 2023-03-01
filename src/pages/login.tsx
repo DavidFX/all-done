@@ -48,12 +48,12 @@ export default function Login() {
           <button className="mt-4 text-5xl" onClick={() => signInWithGoogle()}>
             <FaGooglePlusSquare />
           </button>
-          <button
+          {/* <button
             className="mt-4 text-5xl"
             onClick={() => signInWithFacebook()}
           >
             <FaFacebookSquare />
-          </button>
+          </button> */}
         </div>
       </div>
     </Layout>

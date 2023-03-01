@@ -2,14 +2,17 @@ import { type NextPage } from "next";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 import Layout from "./Layout";
+import { FiMoon, FiSun } from "react-icons/fi";
 
 import { auth } from "../utils/firebase";
 import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useDarkMode } from "usehooks-ts";
 
 const Home: NextPage = () => {
   const [user, loading, error] = useAuthState(auth);
   const router = useRouter();
+  const { isDarkMode, toggle } = useDarkMode();
 
   if (loading)
     return (
@@ -35,10 +38,18 @@ const Home: NextPage = () => {
 
   return (
     <Layout title="All Done">
-      <div className="flex h-screen w-screen flex-col items-center justify-center">
+      <div
+        data-theme={isDarkMode ? "dark" : "light"}
+        className="flex h-screen w-screen flex-col items-center justify-center"
+      >
         <div className="card w-96 bg-base-100 shadow-xl">
           <div className="card-body">
-            <h2 className="card-title">allDone</h2>
+            <div className="flex justify-between">
+              <h2 className="card-title">allDone</h2>
+              <button className="text-xl" onClick={toggle}>
+                {isDarkMode ? <FiSun /> : <FiMoon />}
+              </button>
+            </div>
             <p>{user?.displayName}</p>
             <TodoForm />
             <TodoList />

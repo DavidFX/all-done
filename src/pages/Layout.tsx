@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useState } from "react";
 
 interface LayoutProps {
   children: React.ReactNode;
